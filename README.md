@@ -2,7 +2,7 @@
 
 A modern weather dashboard built with performance, accessibility, and user experience in mind. WeatherWave provides real-time and forecasted weather data for cities around the world using the OpenWeatherMap API.
 
-Live Demo: [Visit App](https://) <!-- Add deployed Vercel link here -->
+Live Demo: [Visit App](https://weatherwave-rho.vercel.app/) <!-- Add deployed Vercel link here -->
 
 ---
 
