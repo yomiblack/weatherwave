@@ -36,7 +36,7 @@ Live Demo: [Visit App](https://) <!-- Add deployed Vercel link here -->
 
 ```bash
 git clone https://github.com/yomiblack/weatherwave.git
-cd weather-dashboard
+cd weatherwave
 ```
 
 ### 2. Install dependencies

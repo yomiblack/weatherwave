@@ -48,7 +48,7 @@ export const fetchForecast = async (lat, lon) => {
 export const fetchGeocoding = async (query) => {
   try {
     const response = await axios.get(
-      "http://api.openweathermap.org/geo/1.0/direct",
+      "https://api.openweathermap.org/geo/1.0/direct",
       {
         params: {
           q: query,
