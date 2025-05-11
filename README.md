@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# WeatherWave
 
-## Getting Started
+A modern weather dashboard built with performance, accessibility, and user experience in mind. WeatherWave provides real-time and forecasted weather data for cities around the world using the OpenWeatherMap API.
 
-First, run the development server:
+Live Demo: [Visit App](https://) <!-- Add deployed Vercel link here -->
+
+---
+
+## 📌 Features
+
+- 🌍 Real-time weather and 5-day forecast
+- 📍 Auto-detect user's location on first load
+- 🔍 Smart city search with autocomplete and recent history
+- ⭐ Favorite locations with quick access
+- 🌙 Light/Dark theme toggle
+- 📱 Fully responsive and mobile-friendly layout
+- 📡 Error handling and user-friendly notifications
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Frontend UI:** [Mantine UI](https://mantine.dev/)
+- **State Management:** [Jotai](https://jotai.org/)
+- **Data Fetching:** [TanStack Query](https://tanstack.com/query/latest) (React Query)
+- **API Integration:** [Axios](https://axios-http.com/)
+- **Weather API:** [OpenWeatherMap](https://openweathermap.org/api)
+- **Icons:** Tabler Icons
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/yomiblack/weatherwave.git
+cd weather-dashboard
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Set up environment variables
+
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_OPENWEATHERMAP_API_KEY=your_api_key_here
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Architecture & Logic
 
-## Learn More
+- **Weather API Requests** are modularized via Axios in `/app/api/weather.js`.
+- **User Location** is obtained using the Geolocation API with fallback to Lagos, Nigeria.
+- **Forecast Data** is processed with timezone awareness and transformed for cleaner UI rendering.
+- **State Management** uses Jotai for location selection and global state sharing.
+- **Error Handling** includes fallback UI with Mantine Notification component.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Testing & Optimization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Fully responsive with `AppShell` layout from Mantine
+- Input fields with `Autocomplete` and keyboard navigation
+- Accessible components with proper ARIA props
+- Code split for performance
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📁 Folder Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+/components       # Reusable UI components
+/hooks            # Custom hooks
+/helpers            # API logic and helpers
+/state            # Jotai atoms
+/pages            # Next.js routing
+/public           # Static assets
+```
+
+---
+
+## 🧑‍💼 Author
+
+**Yomiblack**
+[GitHub](https://github.com/yomiblack)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. Feel free to fork and contribute.
