@@ -1,15 +1,20 @@
 "use client";
 import { AppShell, Burger } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/navigation";
 import ThemeToggle from "../components/header/themeToggle";
 
 import WeatherDashboard from "../components/main/main";
 import DashboardNavbar from "../components/navbar/navbar";
 import LocationSearch from "../components/header/searchBar";
+import {
+  sidebarOpenAtom,
+  toggleSidebarAtom,
+} from "../components/state/sidebarAtoms";
+import { useAtom } from "jotai";
 
 export default function Dashboard() {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened] = useAtom(sidebarOpenAtom);
+  const [, toggle] = useAtom(toggleSidebarAtom);
 
   const router = useRouter();
 

@@ -23,8 +23,13 @@ import ButtonClose from "../buttons/closeButton";
 import { useRef } from "react";
 import Link from "next/link";
 import SettingsNavButton from "../helpers/settingsNavButton";
+import { sidebarOpenAtom } from "../state/sidebarAtoms";
+// import useAtom from "jotai";
+import { useAtom } from "jotai";
 
 export default function DashboardNavbar() {
+  const [, setSidebarOpen] = useAtom(sidebarOpenAtom);
+
   //Scroll to view with highlight
   const favoritesRef = useRef(null);
   const historyRef = useRef(null);
@@ -119,7 +124,12 @@ export default function DashboardNavbar() {
                 {/* Location details (clickable) */}
                 <Group
                   wrap="nowrap"
-                  onClick={() => setSelectedLocation(location)}
+                  onClick={() => {
+                    setSelectedLocation(location);
+                    if (window.innerWidth < 768) {
+                      setSidebarOpen(false);
+                    }
+                  }}
                 >
                   <Avatar size="sm" variant="transparent">
                     {favorites.some((fav) => fav.name === location.name)
@@ -168,7 +178,12 @@ export default function DashboardNavbar() {
               key={index}
               wrap="nowrap"
               style={{ cursor: "pointer" }}
-              onClick={() => setSelectedLocation(item)}
+              onClick={() => {
+                setSelectedLocation(item);
+                if (window.innerWidth < 768) {
+                  setSidebarOpen(false);
+                }
+              }}
             >
               <Avatar size="sm" variant="transparent">
                 ⏱️
