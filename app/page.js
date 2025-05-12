@@ -6,20 +6,26 @@ import {
   Stack,
   Group,
   Image,
+  Affix,
 } from "@mantine/core";
-import Link from "next/link";
 import {
   IconCloudStorm,
   IconTemperature,
   IconMapPin,
 } from "@tabler/icons-react";
+import Link from "next/link";
+import ThemeToggle from "./components/header/themeToggle";
 
 export default function Home() {
   return (
     <Container
       size="xs"
       py="xl"
-      style={{ minHeight: "100vh", display: "flex", alignItems: "center" }}
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+      }}
     >
       <Stack align="center" gap="xl" w="100%">
         <Group gap="xs">
@@ -62,6 +68,11 @@ export default function Home() {
           Launch Dashboard
         </Button>
       </Stack>
+
+      {/* Theme Toggle Placement */}
+      <Affix position={{ bottom: 20, right: 20 }} zIndex={100}>
+        <ThemeToggle />
+      </Affix>
     </Container>
   );
 }
