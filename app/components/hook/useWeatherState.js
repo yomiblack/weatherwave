@@ -43,7 +43,9 @@ export const useWeatherState = () => {
 
   //Remove from favorites
   const handleRemoveFavorite = (id) => {
+    const locationName = favorites.find((fav) => fav.id === id)?.name;
     setFavorites((prev) => prev.filter((fav) => fav.id !== id));
+    alert(`${locationName} removed from your favorites!`);
   };
 
   //Add to history

@@ -24,7 +24,6 @@ import { useRef } from "react";
 import Link from "next/link";
 import SettingsNavButton from "../helpers/settingsNavButton";
 import { sidebarOpenAtom } from "../state/sidebarAtoms";
-// import useAtom from "jotai";
 import { useAtom } from "jotai";
 
 export default function DashboardNavbar() {
@@ -36,7 +35,27 @@ export default function DashboardNavbar() {
   const [favoriteHighlighted, setFavoriteHighlighted] = useState(false);
   const [historyHighlighted, setHistoryHighlighted] = useState(false);
 
+  const {
+    selectedLocation,
+    setSelectedLocation,
+    history,
+    favorites,
+    handleAddFavorite,
+    handleRemoveFavorite,
+  } = useWeatherState();
+
+  // Function to scroll to a specific section and highlight it
   const scrollToView = (action, state) => {
+    if (action === favoritesRef && favorites.length <= 0) {
+      alert("No favorites yet! Add a location to favorites.");
+      return;
+    }
+    if (action === historyRef && history.length <= 0) {
+      alert(
+        "No history available. Please browse locations to save your search history."
+      );
+      return;
+    }
     if (action.current) {
       action.current.scrollIntoView({
         behavior: "smooth",
@@ -46,15 +65,6 @@ export default function DashboardNavbar() {
       setTimeout(() => state(false), 800); // remove highlight after 800ms
     }
   };
-
-  const {
-    selectedLocation,
-    setSelectedLocation,
-    history,
-    favorites,
-    handleAddFavorite,
-    handleRemoveFavorite,
-  } = useWeatherState();
 
   return (
     <AppShell.Navbar p="md">
