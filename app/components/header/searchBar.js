@@ -4,10 +4,13 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchGeocoding } from "@/app/api/weather";
 import { useState, useMemo } from "react";
 import { useWeatherState } from "@/app/components/hook/useWeatherState";
+import { sidebarOpenAtom } from "../state/sidebarAtoms";
+import { useAtom } from "jotai";
 
 export default function LocationSearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const { setSelectedLocation, addToHistory } = useWeatherState();
+  const [, setSidebarOpen] = useAtom(sidebarOpenAtom);
 
   const { data: locations = [], isLoading } = useQuery({
     queryKey: ["locations", searchQuery],
@@ -40,6 +43,7 @@ export default function LocationSearch() {
         name: selected.value,
         coords: { lat: selected.lat, lon: selected.lon },
       };
+      setSidebarOpen(false); // Close the sidebar if it's open
       setSelectedLocation(locationData);
       addToHistory(locationData);
     }
